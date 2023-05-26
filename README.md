@@ -11,7 +11,7 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/iszhouhuabo/chatgpt-next-web-fastapi)
 
-![主界面](https://github.com/iszhouhuabo/ChatGPT-Next-Web/blob/main/docs/images/cover.png)
+![主界面](https://raw.githubusercontent.com/iszhouhuabo/ChatGPT-Next-Web/main/docs/images/cover.png)
 
 </div>
 
