@@ -2,7 +2,9 @@ import json
 import os
 import time
 
-from fastapi import Request
+from fastapi import HTTPException
+
+from api.auth import auth_headers
 
 
 def build_msg(msg):
@@ -27,22 +29,20 @@ def get_path():
     return open_path if open_path else "https://api.openai.com"
 
 
-def get_headers(request: Request):
-    headers = {
+def get_headers(authorization: str):
+    openai_headers = {
         "Content-Type": "application/json",
         "x-requested-with": "XMLHttpRequest",
         "Authorization": "",
     }
-    token = request.headers["Authorization"].removeprefix("Bearer ") if "Authorization" in request.headers else None
+    auth_rep = auth_headers(authorization)
 
-    # use user's api key first
-    if token and "ak-" not in token:
-        headers["Authorization"] = f"Bearer {token}"
-    else:
-        authorize_code = os.getenv("CODE")
-        if not authorize_code or token.removeprefix("ak-") in authorize_code.split(","):
-            headers["Authorization"] = f"Bearer {os.getenv('OPENAI_API_KEY')}"
-    return headers
+    if auth_rep["error"]:
+        raise HTTPException(status_code=401, detail=auth_rep["message"])
+
+    openai_headers["Authorization"] = f"Bearer {auth_rep['api_key']}"
+
+    return openai_headers
 
 
 def get_now():

@@ -7,8 +7,11 @@ from rich.table import Table
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
-from chat.router import chat_router
-from msg.utils import get_now
+from api.chat.router import chat_router
+from api.config.router import config_router
+from utils.all_utils import get_now
+
+load_dotenv()
 
 app = FastAPI(default_response_class=JSONResponse, default_encoding="utf-8")
 
@@ -28,8 +31,7 @@ app.add_middleware(
 )
 
 app.include_router(chat_router, prefix="/api/openai")
-
-load_dotenv()
+app.include_router(config_router, prefix="/api/config")
 
 
 @app.get("/")
@@ -56,10 +58,17 @@ async def log_requests(request: Request, call_next):
 async def startup_event():
     console = Console()
     table = Table(show_header=True, header_style="bold magenta")
-    table.add_column("OpenAI API Key", style="dim", width=30)
-    table.add_column("CODE", width=30)
+    table.add_column("OpenAI API Key", style="dim", width=40)
+    table.add_column("CODE", width=40)
     table.add_row(os.getenv("OPENAI_API_KEY"), os.getenv("CODE"))
-    console.print("You Config Info ⬇️⬇️⬇️")
+    console.print(" You Config Info ⬇️⬇️⬇️")
     console.print(table)
-    console.print("欢迎来到 ChatGPT-Next-Web For Python FastApi 😊😊😊")
-    console.print("https://github.com/iszhouhuabo/chatgpt-next-web-fastapi")
+    console.print(" 欢迎来到 ChatGPT-Next-Web For Python FastApi 😊😊😊")
+    console.print(" Star: https://github.com/iszhouhuabo/chatgpt-next-web-fastapi")
+
+
+# 关闭时
+@app.on_event("shutdown")
+async def on_shutdown():
+    console = Console()
+    console.print("See You Again...")
