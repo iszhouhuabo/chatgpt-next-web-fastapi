@@ -7,7 +7,7 @@
 
 [演示 前端 Demo](https://zhb.chatools.online/) / [演示 后台 Demo](https://chatgpt-next-web-fastapi.vercel.app/) / [反馈 Issues](https://github.com/iszhouhuabo/chatgpt-next-web-fastapi/issues)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYidadaa%2FChatGPT-Next-Web&env=OPENAI_API_KEY&env=CODE&project-name=chatgpt-next-web&repository-name=ChatGPT-Next-Web)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fiszhouhuabo%2Fchatgpt-next-web-fastapi&env=OPENAI_API_KEY&env=CODE&project-name=chatgpt-next-web-fastapi&repository-name=chatgpt-next-web-fastapi)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/iszhouhuabo/chatgpt-next-web-fastapi)
 
@@ -54,7 +54,7 @@
 
 1. 准备好你的 [OpenAI API Key](https://platform.openai.com/account/api-keys);
 2. 点击右侧按钮开始部署：
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/iszhouhuabo/chatgpt-next-web-fastapi&env=OPENAI_API_KEY&env=CODE&project-name=chatgpt-next-web&repository-name=ChatGPT-Next-Web)
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/iszhouhuabo/chatgpt-next-web-fastapi&env=OPENAI_API_KEY&env=CODE&project-name=chatgpt-next-web&repository-name=chatgpt-next-web-fastapi)
    ，直接使用 Github 账号登录即可，记得在环境变量页填入 API Key 和[页面访问密码](#配置页面访问密码) CODE；
    > 目前使用 Vercel 部署，SSE 流没办法正常运作，会有事件循环问题；可能是 Vercel 的配置有问题，目前正在想办法解决中... 本地开发和Docker部署不受影响
 3. 部署完毕后，即可开始使用；
