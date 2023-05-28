@@ -56,6 +56,7 @@
 2. 点击右侧按钮开始部署：
    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/iszhouhuabo/chatgpt-next-web-fastapi&env=OPENAI_API_KEY&env=CODE&project-name=chatgpt-next-web&repository-name=ChatGPT-Next-Web)
    ，直接使用 Github 账号登录即可，记得在环境变量页填入 API Key 和[页面访问密码](#配置页面访问密码) CODE；
+   > 目前使用 Vercel 部署，SSE 流没办法正常运作，会有事件循环问题；可能是 Vercel 的配置有问题，目前正在想办法解决中... 本地开发和Docker部署不受影响
 3. 部署完毕后，即可开始使用；
 4. （可选）[绑定自定义域名](https://vercel.com/docs/concepts/projects/domains/add-a-domain)：Vercel 分配的域名 DNS
    在某些区域被污染了，绑定自定义域名即可直连。
