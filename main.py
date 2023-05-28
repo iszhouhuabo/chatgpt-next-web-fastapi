@@ -1,5 +1,6 @@
 import os
 
+import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from rich.console import Console
@@ -72,3 +73,8 @@ async def startup_event():
 async def on_shutdown():
     console = Console()
     console.print("See You Again...")
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT") if os.getenv("PORT") is not None or "" else 8000,
+                reload=False)

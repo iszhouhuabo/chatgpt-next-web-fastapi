@@ -7,8 +7,8 @@ from msg.chat_messages import ChatMessages
 from utils.all_utils import build_stream_msg
 
 
-def chat_not_stream(api_key: str,
-                    chat: ChatMessages) -> Response:
+async def chat_not_stream(api_key: str,
+                          chat: ChatMessages) -> Response:
     openai.api_key = api_key
     try:
         response = openai.ChatCompletion.create(

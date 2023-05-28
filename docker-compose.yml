@@ -1,7 +1,7 @@
 version: '3'
 services:
   py-chatgpt-next-web:
-    image: zhouhuabo/py-chatgpt-next-web:0.2
+    image: zhouhuabo/py-chatgpt-next-web:latest
     ports:
       - "8000:5000"
     environment:

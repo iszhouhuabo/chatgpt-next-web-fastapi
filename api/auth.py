@@ -4,14 +4,14 @@ from constant import access_code_prefix
 
 
 def auth_headers(authorization: str) -> {bool, str}:
-    if authorization is None:
-        return {"error": True, "message": "No Authorization header provided"}
-
     authorize_code = os.getenv("CODE")
     openai_api_key = os.getenv("OPENAI_API_KEY")
 
     if authorize_code is None:
         return {"error": False, "message": "Not Open code model", "api_key": openai_api_key}
+
+    if authorization is None:
+        return {"error": True, "message": "No Authorization header provided"}
 
     api_key_or_code = authorization.removeprefix("Bearer ")
 

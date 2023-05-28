@@ -24,8 +24,10 @@ async def completions(request: Request, authorization: str = Header(None)):
     if chat_message.stream:
         return EventSourceResponse(
             chat_stream(request, auth_rep["api_key"], chat_message))
+        # return StreamingResponse(chat_stream(request, auth_rep["api_key"], chat_message),
+        #                          media_type="text/event-stream")
     else:
-        return JSONResponse(chat_not_stream(auth_rep["api_key"], chat_message))
+        return JSONResponse(await chat_not_stream(auth_rep["api_key"], chat_message))
 
 
 # 已经使用额度
