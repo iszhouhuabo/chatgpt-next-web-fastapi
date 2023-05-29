@@ -34,20 +34,19 @@ async def chat_stream(
             temperature=chat.temperature,
             presence_penalty=chat.presence_penalty,
             frequency_penalty=chat.frequency_penalty,
-            stream=chat.stream,
+            stream=True,
             messages=chat.messages)
     except Exception as e:
         yield build_stream_msg(e.http_body, True) if e.http_body is not None else build_stream_msg(e.user_message)
+    else:
+        for trunk in response:
+            if await request.is_disconnected():
+                break
+            if trunk is None:
+                continue
+            if trunk['choices'][0]['finish_reason'] is not None:
+                break
+            else:
+                yield json.dumps(trunk)
+    finally:
         yield '[DONE]'
-        return
-
-    for trunk in response:
-        if await request.is_disconnected():
-            break
-        if trunk is None:
-            continue
-        if trunk['choices'][0]['finish_reason'] is not None:
-            data = '[DONE]'
-        else:
-            data = json.dumps(trunk)
-        yield data

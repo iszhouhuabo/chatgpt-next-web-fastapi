@@ -1,14 +1,14 @@
-import os
-
 from fastapi import APIRouter
 from starlette.responses import JSONResponse
+
+from settings.config import settings
 
 config_router = APIRouter()
 
 
-# 总额度
+# 给前端的一些配置
 @config_router.post("")
 async def subscription() -> JSONResponse:
-    return JSONResponse({"needCode": True if os.getenv("CODE") not in ("", None) else False,
-                         "hideUserApiKey": True if os.getenv("HIDE_USER_API_KEY") is 1 else False,
-                         "enableGPT4": True if os.getenv("HIDE_USER_API_KEY") is 1 else False})
+    return JSONResponse({"needCode": True if settings.code else False,
+                         "hideUserApiKey": settings.hide_user_api_key,
+                         "enableGPT4": not settings.disable_gpt4})

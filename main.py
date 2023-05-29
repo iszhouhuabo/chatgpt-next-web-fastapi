@@ -1,7 +1,6 @@
 import os
 
 import uvicorn
-from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from rich.console import Console
 from rich.table import Table
@@ -12,7 +11,7 @@ from api.chat.router import chat_router
 from api.config.router import config_router
 from utils.all_utils import get_now
 
-load_dotenv()
+# load_dotenv()
 
 app = FastAPI(default_response_class=JSONResponse, default_encoding="utf-8")
 
@@ -62,10 +61,12 @@ async def startup_event():
     table.add_column("OpenAI API Key", style="dim", width=40)
     table.add_column("CODE", width=40)
     table.add_row(os.getenv("OPENAI_API_KEY"), os.getenv("CODE"))
-    console.print(" You Config Info ⬇️⬇️⬇️")
+    console.print("You Config Info ⬇️⬇️⬇️")
     console.print(table)
-    console.print(" 欢迎来到 ChatGPT-Next-Web For Python FastApi 😊😊😊")
-    console.print(" Star: https://github.com/iszhouhuabo/chatgpt-next-web-fastapi")
+    console.print("欢迎来到 ChatGPT-Next-Web For Python FastApi 😊😊😊")
+    console.print("Star: https://github.com/iszhouhuabo/chatgpt-next-web-fastapi")
+
+    # console.print(settings)
 
 
 # 关闭时
