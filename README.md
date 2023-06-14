@@ -22,9 +22,8 @@
 > 如果你觉得这个项目对你有帮助，并且情况允许的话，可以帮忙 Star 一下，总之非常感谢支持～
 
 前端基于 `Yidadaa` 的 [ChatGPT-Next-Web](https://github.com/Yidadaa/ChatGPT-Next-Web)
-二次开发而来，只做了稍微的修改（这样同步更新`Yidadaa`的代码和功能更加方便，不要重复造轮子～），主要去掉了 `NodeJs`
-的后台，修改后仓库代码：[ChatGPT-Next-Web(Python后台版本)](https://github.com/iszhouhuabo/ChatGPT-Next-Web)
-，分支是 `Python-fastapi`
+二次开发而来，只做了稍微的修改（这样同步更新`Yidadaa`的代码和功能更加方便，不要重复造轮子），主要去掉了 `NodeJs`
+的后台，代码文件：`ChatGPT-Next-Web`
 
 将后端代码修改成 `Python` 呢，主要是为了降低后台工程师的开发成本；因为之后准备引入后台管理这块，`Python` 搞起来相对简单一点。
 
@@ -45,12 +44,21 @@
 
 ## 开发计划
 
+- [x] 为每个对话设置系统 Prompt
+- [x] 允许用户自行编辑内置 Prompt 列表
+- [x] 预制角色：使用预制角色快速定制新对话
+- [x] 分享为图片，分享到 ShareGPT 链接 
+
 - [ ] 界面文字自定义
-- [ ] 用户登录、账号管理、消息云同步
+- [ ] OpenAI 密钥轮询
+- [ ] 用户登录、账号管理
+- [ ] 消息云同步
 
 <br/>
 
 ## 开始使用
+
+### Python fastapi 后端
 
 1. 准备好你的 [OpenAI API Key](https://platform.openai.com/account/api-keys);
 2. 点击右侧按钮开始部署：
@@ -60,6 +68,10 @@
 3. 部署完毕后，即可开始使用；
 4. （可选）[绑定自定义域名](https://vercel.com/docs/concepts/projects/domains/add-a-domain)：Vercel 分配的域名 DNS
    在某些区域被污染了，绑定自定义域名即可直连。
+
+### ChatGPT-Next-Web 前端
+
+> Wait ....
 
 <br/>
 
@@ -72,3 +84,11 @@ OpanAI 密钥，你在 openai 账户页面申请的 api key。
 ### `CODE` （可选）
 
 访问密码，可选，可以使用逗号隔开多个密码。
+
+### `HIDE_USER_API_KEY` （可选）
+
+隐藏前端自定义 OpenAI 密钥，设置成 `1` ，使用者将不能使用自己的 OpenAI 密钥
+
+### `PROXY_URL` （可选）
+
+代理服务器，请选用能信任的提供者；否则可能有泄漏 OpenAI 密钥的风险
